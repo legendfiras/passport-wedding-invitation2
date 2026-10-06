@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#061d2d">
+  <meta name="description" content="A passport to forever. Celebrate the wedding of Delilah and Juan Carlos on December 19, 2026.">
+  <title>Delilah &amp; Juan Carlos · A Passport to Forever</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/intro/envelope-opening-mobile-poster.webp" as="image" media="(max-aspect-ratio: 1/1)">
+  <link rel="preload" href="assets/intro/envelope-opening-desktop-poster.webp" as="image" media="(min-aspect-ratio: 1/1)">
+  <link rel="preload" href="fonts/pinyon-script-normal-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/passport-cover.webp" as="image">
+  <link rel="preload" href="assets/passport-spread.webp" as="image">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="envelope-intro" id="envelopeIntro">
+    <video id="introVideo" muted playsinline preload="auto" aria-hidden="true"></video>
+    <button class="envelope-tap" id="envelopeTap" type="button" aria-label="Open the envelope"><span class="envelope-hint">Tap to open</span></button>
+  </div>
+  <script src="intro.js"></script>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="plane-icon" viewBox="0 0 48 48"><path d="M44 4 29 24l7 16-5 4-11-14-9 7-6-2 11-12L3 14l4-5 17 7L44 4Z" fill="currentColor"/></symbol>
+      <symbol id="compass-icon" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8"/><path d="m32 0 5 25 18-16-16 18 25 5-25 5 16 18-18-16-5 25-5-25-18 16 16-18L0 32l25-5L9 9l18 16Z" fill="currentColor"/><circle cx="32" cy="32" r="4" fill="none" stroke="currentColor"/></symbol>
+      <symbol id="calendar-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18M8 2v6m8-6v6m-9 7h3m3 0h3m-9 3h3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="globe-icon" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="24" cy="24" rx="9" ry="20" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 24h40M8 12h32M8 36h32" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+    </defs>
+  </svg>
+  <header class="site-header" id="siteHeader">
+    <a class="header-monogram" href="#reveal" aria-label="Return to the invitation">D <i>&amp;</i> JC</a>
+    <span class="preview-badge" id="previewBadge" hidden>Invitation preview</span>
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Play music" aria-pressed="false"><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="musicLabel">Music off</span></button>
+  </header>
+
+  <main id="invitation">
+    <section class="passport-entry navy-paper" id="passportEntry" aria-labelledby="passportEntryHeading">
+      <h1 class="sr-only" id="passportEntryHeading">Delilah and Juan Carlos wedding invitation</h1>
+      <div class="passport-stage" aria-label="A closed navy wedding passport">
+      <div class="passport" id="passport">
+        <div class="page right-page"><div class="page-inner"><p class="page-eyebrow">A lifetime of adventures</p><svg class="book-route" viewBox="0 0 240 280"><path class="book-heart-path" d="M20 180C55 215 90 143 80 130C69 113 42 135 70 156C103 184 156 160 200 100"/><use href="#plane-icon" x="179" y="75" width="32" height="32"/></svg><p class="page-bottom">Love. Travel.<br>Infinite horizons.</p></div></div>
+        <div class="turning-leaf" id="turningLeaf">
+          <div class="cover-face"><div class="cover-copy"><p class="passport-title">PASSPORT</p><p class="passport-subtitle">TO OUR FOREVER</p><div class="cover-monogram">D<span>&amp;</span>JC</div><p class="cover-date">19 DECEMBER 2026</p><span class="cover-star">✦</span></div></div>
+          <div class="inside-face page"><div class="page-inner"><p class="page-eyebrow">One love</p><div class="passport-stamp"><span>D &amp; JC</span><small>ONE JOURNEY<br>ONE FOREVER</small></div></div></div>
+        </div>
+        <span class="book-spine" aria-hidden="true"></span>
+      </div>
+      </div>
+      <div class="passport-action"><button class="pill ivory-button" id="openInvitation" type="button">Open our passport <span aria-hidden="true">→</span></button><p>DECEMBER 19, 2026</p></div>
+      <span class="sr-only" id="openingStatus" role="status" aria-live="polite"></span>
+    </section>
+    <section class="hero ivory-paper" id="reveal" aria-labelledby="coupleNames">
+      <div class="hero-copy" id="heroCopy">
+        <p class="eyebrow">Together with their families</p>
+        <div class="countdown" aria-label="Countdown to the ceremony"><span><b id="days">00</b> days</span><span><b id="hours">00</b> hours</span><span><b id="minutes">00</b> minutes</span></div>
+        <svg class="hero-compass" aria-hidden="true"><use href="#compass-icon"/></svg>
+        <h1 class="names" id="coupleNames"><span>Delilah</span><span><i>&amp;</i> Juan Carlos</span></h1>
+        <div class="name-divider" aria-hidden="true"><span></span>✦<span></span></div>
+        <p class="adventure-line">Our great adventure begins</p>
+        <time class="date-line" datetime="2026-12-19">DECEMBER 19, 2026</time>
+      </div>
+      <div class="book-mount" id="bookMount" aria-label="An open passport, illustrated with a harbour and world map"></div>
+      <p class="hero-welcome">We would love for you to join us on our special day.</p>
+      <button class="pill navy-button scroll-down" id="scrollDown" type="button">Scroll down <span class="down-mark" aria-hidden="true">↓</span></button>
+    </section>
+
+    <section class="story ivory-paper" id="story" aria-labelledby="storyHeading">
+      <div class="section-heading scroll-reveal"><p class="eyebrow">Our story in three stops</p><h2 class="script-heading" id="storyHeading">Our Journey</h2><p class="italic-copy">One love. One journey. One forever.</p></div>
+      <div class="story-route" id="storyRoute">
+        <svg class="flight-map" id="flightMap" viewBox="0 0 1000 1540" preserveAspectRatio="none" aria-hidden="true">
+          <path class="route-base" d="M500 0C900 180 210 340 500 530C815 740 170 815 500 1000C840 1190 240 1300 500 1540"/>
+          <path class="route-progress" id="storyProgress" d="M500 0C900 180 210 340 500 530C815 740 170 815 500 1000C840 1190 240 1300 500 1540"/>
+        </svg>
+        <div class="travelling-plane" id="storyPlane" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#plane-icon"/></svg></div>
+        <article class="story-stop stop-left scroll-reveal"><figure class="photo-frame"><div class="photo-slot" id="photoSlot0"><span class="photo-placeholder"><svg viewBox="0 0 48 48"><use href="#globe-icon"/></svg><span>THE DAY WE MET</span><small>Our photograph goes here</small></span><img id="storyPhoto0" alt="Delilah and Juan Carlos when their story began" hidden></div><figcaption>Where it all began</figcaption></figure><div class="story-copy"><p class="eyebrow">First destination</p><h3>The day we met</h3><p>Every great journey begins with a first step.<br>This was ours.</p></div></article>
+        <article class="story-stop stop-right scroll-reveal"><figure class="photo-frame"><div class="photo-slot" id="photoSlot1"><span class="photo-placeholder"><span class="placeholder-heart">♡</span><span>SHE SAID YES</span><small>Our photograph goes here</small></span><img id="storyPhoto1" alt="The moment Juan Carlos proposed to Delilah" hidden></div><figcaption>A yes to forever</figcaption></figure><div class="story-copy"><p class="eyebrow">Next stop</p><h3>She said yes</h3><p>One question. One beautiful yes.<br>A lifetime of adventures ahead.</p></div></article>
+        <article class="story-stop stop-left scroll-reveal"><figure class="photo-frame"><div class="photo-slot" id="photoSlot2"><span class="photo-placeholder"><span class="placeholder-monogram">D &amp; JC</span><span>OUR FOREVER</span><small>Our photograph goes here</small></span><img id="storyPhoto2" alt="Delilah and Juan Carlos beginning their next chapter" hidden></div><figcaption>Our next adventure</figcaption></figure><div class="story-copy"><p class="eyebrow">Our forever destination</p><h3>December 19, 2026</h3><p>Now boarding: our journey to forever.<br>And we would love you on board.</p></div></article>
+      </div>
+    </section>
+
+    <section class="destinations navy-paper" id="destinations" aria-labelledby="itineraryHeading">
+      <div class="section-heading scroll-reveal"><p class="eyebrow">Flight Itinerary · December 19, 2026</p><h2 id="itineraryHeading"><span class="script-heading">From vows to</span><span class="serif-heading">CELEBRATION</span></h2><p class="italic-copy">Follow our route from vows to celebration.</p></div>
+      <div class="destination-route" id="destinationRoute">
+        <svg class="destination-path" viewBox="0 0 100 1500" preserveAspectRatio="none" aria-hidden="true"><path id="destinationPath" d="M50 0C-10 170 108 300 50 460C-15 660 112 820 50 980C-10 1170 105 1330 50 1500"/></svg>
+        <div class="destination-plane" id="destinationPlane" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#plane-icon"/></svg></div>
+        <article class="venue-ticket ivory-paper scroll-reveal" id="ceremony" aria-labelledby="ceremonyHeading">
+          <div class="ticket-copy"><p class="ticket-kicker">01 · THE CEREMONY</p><p class="small-journey">Destination 1 · The Vows</p><h3 id="ceremonyHeading">Saint Rose of Lima</h3><p class="ticket-time">DECEMBER 19 · 2:00 PM</p><div class="ticket-rule" aria-hidden="true">✝</div><p class="venue-address" id="massAddress">3880 Pleasant Hill Road<br>Kissimmee, FL 34746</p><a class="map-link" id="massMap" href="#" target="_blank" rel="noopener noreferrer">VIEW LOCATION <span aria-hidden="true">→</span></a></div>
+          <div class="venue-illustration church-illustration" role="img" aria-label="Sepia church illustration from the invitation reference"></div>
+        </article>
+        <aside class="attire scroll-reveal" aria-labelledby="attireHeading"><p class="eyebrow">Before you board · Dress code</p><h3 class="script-heading" id="attireHeading">Come celebrate in your finest</h3><p class="attire-formal">Formal attire requested.</p><p><strong>Gentlemen,</strong> suits or formal attire, please.</p><p><strong>Ladies,</strong> wear a dress in any color you love—just kindly save white for the bride.</p><span class="gold-rule" aria-hidden="true">✦</span><p class="bride-note">White is lovingly reserved for the bride.</p><p class="intermission"><span>Intermission</span>Time to relax between our two destinations.</p></aside>
+        <article class="venue-ticket ivory-paper scroll-reveal" id="celebration" aria-labelledby="celebrationHeading"><div class="ticket-copy"><p class="ticket-kicker">02 · THE CELEBRATION</p><p class="small-journey">Destination 2</p><h3 id="celebrationHeading">Infinity Party Room</h3><p class="ticket-time">DECEMBER 19 · 6:00 PM</p><p class="celebration-copy">Dinner, dancing &amp;<br>sweet memories</p><p class="venue-address" id="celebrationAddress">2912 Pleasant Hill Road<br>Kissimmee, FL 34746</p><a class="map-link" id="celebrationMap" href="#" target="_blank" rel="noopener noreferrer">VIEW LOCATION <span aria-hidden="true">→</span></a></div><div class="venue-illustration celebration-illustration" role="img" aria-label="Sepia celebration illustration with palms and champagne from the invitation reference"></div></article>
+        <p class="celebration-footer scroll-reveal">Dinner, dancing, desserts, and memories.</p>
+      </div>
+      <div class="coastline-art" aria-hidden="true"></div>
+    </section>
+
+    <section class="rsvp navy-paper" id="rsvp" aria-labelledby="rsvpHeading">
+      <div class="section-heading scroll-reveal"><p class="eyebrow">04 · RSVP confirmation</p><h2 id="rsvpHeading"><span class="script-heading">You’re on the</span><span class="serif-heading">MANIFEST</span></h2><p class="form-intro">It would mean the world to celebrate with you.<br>One loving reply covers your household.</p></div>
+      <div class="boarding-ticket ivory-paper scroll-reveal" id="boardingTicket">
+        <div class="boarding-main"><p class="ticket-kicker">FIRST CLASS TO FOREVER</p><div class="ticket-plane-art" aria-hidden="true"><svg viewBox="0 0 600 180" preserveAspectRatio="xMidYMid meet"><path class="ticket-flight-path" d="M35 137C150 35 250 156 385 76C430 49 468 44 520 43"/><use href="#plane-icon" x="482" y="15" width="86" height="86"/></svg></div><h3 class="ticket-names">DELILAH &amp; JUAN CARLOS</h3><div class="boarding-details"><p>DESTINATION: FOREVER</p><p>FLIGHT NO. <strong>12-19</strong></p><p>DECEMBER 19, 2026</p><p>GATE: ST. ROSE OF LIMA</p><p>BOARDING: 2:00 PM</p></div><form id="rsvpForm" novalidate><p class="passenger-label">PASSENGER / FAMILY NAME</p><div class="name-fields"><label>First name<input id="firstName" name="firstName" type="text" autocomplete="given-name" required maxlength="60" placeholder="First name"></label><label>Last name<input id="lastName" name="lastName" type="text" autocomplete="family-name" required maxlength="60" placeholder="Last name"></label></div><div class="reply-buttons" id="replyButtons"><button class="reply-button accept-button" type="submit" name="attending" value="yes">Joyfully accept <span aria-hidden="true">♡</span></button><button class="reply-button decline-button" type="submit" name="attending" value="no">Regretfully decline</button></div><p class="form-message" id="formMessage" role="status" aria-live="polite"></p></form><div class="rsvp-response" id="rsvpResponse" role="status" tabindex="-1" hidden></div></div>
+        <div class="boarding-stub" id="boardingStub"><p class="ticket-kicker">BOARDING PASS</p><svg class="stub-globe" viewBox="0 0 48 48" aria-hidden="true"><use href="#globe-icon"/></svg><div id="pendingStamp"><p class="pending-copy">Ready for<br>departure</p><small>Your reply awaits</small></div><div id="confirmedStamp" class="confirmed-stamp" hidden><p>RSVP<br>CONFIRMED</p><span aria-hidden="true">♡</span></div><div id="declinedStamp" class="declined-stamp" hidden><p>LOVE<br>FROM AFAR</p><span aria-hidden="true">♡</span></div><div class="barcode" aria-hidden="true"></div><p class="stub-flight">D &amp; JC · 12-19</p></div>
+      </div>
+      <div class="boarding-notes scroll-reveal"><p>This invitation is valid only for the named guests.</p><p>Adults-only celebration. We kindly ask that children remain at home.</p><p class="rsvp-deadline">Kindly reply by <strong>November 6, 2026.</strong></p><p class="reservation-note">Your invitation is lovingly reserved for two guests.</p><p class="final-destination">Final destination: Happily Ever After <span aria-hidden="true">♡</span></p></div>
+      <p class="awaiting-you" id="awaitingYou">We can’t wait to celebrate with you</p>
+      <div class="heart-divider" aria-hidden="true"><span></span>♡<span></span></div>
+      <button class="calendar-button" id="addCalendar" type="button" hidden><svg aria-hidden="true"><use href="#calendar-icon"/></svg>ADD TO CALENDAR</button>
+      <footer class="closing"><p class="closing-monogram">D<span>&amp;</span>JC</p><p>Thank you for being part of our story.</p><p>We can’t wait to have you on board as we begin our greatest adventure yet.</p><p class="closing-small">Our journey to forever begins 12.19.2026.</p><svg class="closing-flight" viewBox="0 0 280 100" aria-hidden="true"><path d="M0 78C62 25 82 107 130 62C147 45 126 30 119 46C111 27 91 43 119 66C173 99 222 71 255 21"/><use href="#plane-icon" x="240" y="1" width="27" height="27"/></svg></footer>
+    </section>
+  </main>
+
+  <dialog class="calendar-dialog ivory-paper" id="calendarDialog" aria-labelledby="calendarHeading"><button class="dialog-close" id="closeCalendar" aria-label="Close calendar options" type="button">×</button><p class="eyebrow">Save our date</p><h2 class="script-heading" id="calendarHeading">A day to remember</h2><p>Delilah &amp; Juan Carlos<br>December 19, 2026</p><div class="calendar-event"><span>The Ceremony</span><strong>2:00 PM · Saint Rose of Lima</strong></div><div class="calendar-event"><span>The Celebration</span><strong>6:00 PM · Infinity Party Room</strong></div><p class="calendar-timezone">Times are local to Kissimmee, Florida.</p><a class="calendar-option" id="googleCalendar" target="_blank" rel="noopener noreferrer">Add to Google Calendar</a><button class="calendar-option" id="downloadCalendar" type="button">Apple / Outlook · Download calendar</button></dialog>
+  <noscript><div class="no-js-note ivory-paper">Delilah &amp; Juan Carlos · December 19, 2026. Please enable JavaScript to open the invitation and send your RSVP.</div></noscript>
+</body>
+</html>

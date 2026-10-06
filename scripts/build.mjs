@@ -1,0 +1,10 @@
+import { access, readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = new URL('../', import.meta.url);
+for (const file of ['dist/index.html', 'dist/styles.css', 'dist/app.js', 'dist/config.js', 'dist/assets/passport-cover.png', 'dist/assets/passport-spread.png']) await access(new URL(file, root));
+const html = await readFile(new URL('dist/index.html', root), 'utf8');
+const refs = [...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(match => match[1]).filter(ref => !/^(#|https?:|data:)/.test(ref));
+const staticRoot = fileURLToPath(new URL('dist/', root));
+for (const ref of refs) await access(resolve(staticRoot, ref));
+console.log('Invitation build verified. Static output: dist/.');

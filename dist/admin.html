@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3eadb">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Staff Admin · D &amp; JC</title>
+  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="admin.css?v=6">
+  <script src="admin.js?v=6" defer></script>
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a href="/" class="back-link">← Invitation</a>
+      <div><p class="eyebrow">Private staff area</p><h1>D <i>&amp;</i> JC</h1></div>
+      <button id="logoutButton" class="admin-link-button" type="button" hidden>Log out</button>
+    </header>
+    <section id="loginPanel" class="login-panel" aria-labelledby="loginHeading">
+      <p class="eyebrow">Staff Admin</p>
+      <h2 id="loginHeading">Welcome back</h2>
+      <p>Sign in to view wedding responses.</p>
+      <form id="loginForm">
+        <label>Username<input name="username" autocomplete="username" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+        <p id="loginMessage" class="admin-message" role="alert"></p>
+        <button class="primary-button" type="submit">Sign in</button>
+      </form>
+    </section>
+    <section id="dashboard" class="dashboard" hidden aria-labelledby="dashboardHeading">
+      <div class="dashboard-title"><div><p class="eyebrow">Household RSVP</p><h2 id="dashboardHeading">Guest dashboard</h2></div><button id="refreshButton" class="admin-link-button" type="button">Refresh</button></div>
+      <p id="dashboardStatus" class="dashboard-status" role="status">Loading responses…</p>
+      <div id="dashboardContent" hidden>
+        <div class="stats" aria-label="RSVP totals">
+          <article><strong id="yesCount">0</strong><span>Households attending</span></article>
+          <article><strong id="noCount">0</strong><span>Households declining</span></article>
+          <article><strong id="guestTotal">0</strong><span>Attending guests</span></article>
+        </div>
+        <section class="response-group" aria-labelledby="yesHeading"><h3 id="yesHeading">Yes responses</h3><div id="yesList" class="response-list"></div></section>
+        <section class="response-group" aria-labelledby="noHeading"><h3 id="noHeading">No responses</h3><div id="noList" class="response-list"></div></section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

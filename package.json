@@ -1,0 +1,14 @@
+{
+  "name": "delilah-juan-carlos-passport-invitation",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env server.mjs",
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node --check server.mjs && node --check dist/app.js && node --check dist/config.js && node --check dist/admin.js",
+    "test": "node --test tests/*.test.mjs"
+  }
+}

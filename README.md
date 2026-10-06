@@ -1,83 +1,84 @@
-# D & JC wedding invitation — magical opening comparison
+# Delilah & Juan Carlos — A Passport to Forever
 
-A comparison version of the complete wedding invitation for Delila and JuanCarlos on December 19, 2026. Its new entrance uses embossed floral envelope folds, golden light, a passport reveal, and a hinged passport opening. The original music, boarding pass, countdown, itinerary, household RSVP, and staff dashboard are included.
+A separate navy, antique gold and ivory invitation for **December 19, 2026**. Ceremony: **2:00 PM**, Saint Rose of Lima Catholic Church. Celebration: **6:00 PM**, Infinity Party Room. Times use the venue's **America/New_York** timezone.
 
-The baseline was copied from `legendfiras/pasport-weddinginvitation` at commit `952875b997d8db32594ca8d614a2530bdc08fb96`. Deploy this repository as a separate project to keep the original invitation and comparison link active.
+## Preview
 
-## Magical opening
+Open `dist/index.html` in a modern browser. File previews display **Invitation preview**; their RSVP responses demonstrate the interface and are not sent to the hosts.
 
-- The gold seal starts the opening and the original music in the same tap.
-- A 9.2-second, 780 × 1300 H.264 film runs at 45 frames per second, with embedded WebP start and end images.
-- The envelope fills a portrait phone viewport, then the camera gently pulls back so both passport pages fit.
-- The existing `invitation:start` and `invitation:complete` events connect the new opening to `dist/app.js`.
-- Reduced motion, skipping, and unavailable video fall back to the open passport and reveal the invitation.
-- MP4 and music responses support byte ranges for mobile playback.
+For the real local RSVP flow, install **Node 24** and run:
 
-The entrance controller is `dist/entrance.js`, its additional styles are `dist/magical-opening.css`, and the three opening assets are in `dist/assets/magic/`. The remaining invitation content and its configuration are copied from the original project.
-
-## Requirements
-
-- Node.js 22.5 or newer (the app uses Node's built-in SQLite module)
-- No package installation or third-party service is required
-
-## Run locally
-
-PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-# Edit .env, then load its values into your shell or set them directly:
-$env:ADMIN_USERNAME = 'staff'
-$env:ADMIN_PASSWORD = 'use-a-long-unique-password'
-$env:SESSION_SECRET = 'use-at-least-32-random-characters'
-npm.cmd start
+```sh
+npm run dev
 ```
 
-Open <http://localhost:3000>. The private dashboard is linked discreetly in the invitation footer or available directly at <http://localhost:3000/admin.html>.
+Open `http://localhost:3000`. There are no third-party runtime dependencies. Local replies persist in SQLite under `data/` and survive restarts. Add `?preview=1` to test the interface without saving real replies.
 
-Node does not automatically read `.env`; configure the variables in the host environment (or load them with your deployment platform). The admin login is intentionally disabled if any required security value is missing.
+## Included
 
-## Configuration
+- Immediate closed-passport first view, separate front/back 3D cover faces, and a continuous opening transition carrying the same open book into the reveal.
+- Bundled calligraphy, local fonts, textured navy/ivory surfaces, gold crest, illustrated book, live countdown and **Scroll down**.
+- A scroll-driven curving flight path and three alternating photo frames.
+- Separate ceremony ticket → dress code → celebration ticket, using the exact original map URLs.
+- Boarding-pass RSVP, **Flight no. 12-19**, first/last name, and a multiline field for full guest names.
+- Acceptance reveals **RSVP CONFIRMED** and the calendar button after saving. Decline shows “Thank you for sending your love from afar.” and hides the calendar button.
+- Native calendar popup with Google Calendar and an `.ics` download containing separate ceremony and celebration events.
+- Earlier journey, dress code, named-guests, adults-only, November 6 RSVP deadline, two-guest reservation and closing wording.
+- Original music, starting from the opening tap, plus a visible music control.
+- Preserved protected staff dashboard / CSV export at `/admin.html`.
+- Reduced-motion support and keyboard-accessible controls.
 
-Invitation details are centralized in [`dist/config.js`](dist/config.js):
+## Real couple photos
 
-- music path
-- wedding date and `America/New_York` timezone
-- venue names, addresses, times, and Google Maps URLs
+No real couple photographs were included in the references or earlier package. Three frames are explicitly marked as placeholders; no likenesses were fabricated.
 
-The two supplied exact map links are already configured. All displayed event times are fixed Kissimmee local times; the browser does not convert them.
+Put the photographs in `dist/assets/photos/` and update `storyPhotos` in `dist/config.js`:
 
-### Music
-
-The provided track is served from:
-
-```text
-dist/audio/risk-it-all.mp3
+```js
+storyPhotos: [
+  'assets/photos/the-day-we-met.jpg',
+  'assets/photos/she-said-yes.jpg',
+  'assets/photos/our-forever.jpg',
+],
 ```
 
-and configured as `/audio/risk-it-all.mp3`. The guest's first tap starts both the music and entrance. Playback loops at 50% volume and continues through the RSVP flow. If the file is missing or playback is rejected, the invitation remains usable.
+Photos fill portrait frames with `object-fit: cover`; use `object-position` to preserve the desired face framing.
 
-## Persistence and deployment
+## Vercel deployment
 
-RSVPs are stored in `data/rsvps.sqlite` by default. Set `DATA_DIR` to a durable, writable volume on the deployment host. The database uses WAL mode and survives page reloads and server restarts. Back up that directory as part of normal deployment operations.
+Copy this folder's contents to the separate repository **legendfiras/passport-wedding-invitation2** and import it into Vercel. Neither repository nor either live website has been changed while making this ZIP.
 
-Required environment variables:
+The included `vercel.json` selects framework **Other**, build **npm run build**, static output **dist**, and the production functions in **api/**.
 
-| Variable | Purpose |
+For **live durable RSVP storage**, set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in Vercel's server environment and redeploy. Never place those credentials in `dist/config.js`. Production handlers save atomically with `HSETNX`; duplicate retries cannot insert another reply or overwrite the first. Without these settings the invitation still renders, but live replies report temporary unavailability and never show a false saved confirmation. Use `?preview=1` to test the visual RSVP flow.
+
+For the staff dashboard, also configure `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `SESSION_SECRET` (at least 32 characters). Production sessions are signed and expire after eight hours. Local Node hosting uses the original SQLite server and session flow. Copy `.env.example` to `.env` for local settings; `npm run dev` loads it.
+
+No production credentials or guest records are included.
+
+## Details to finalize
+
+- Latest names, spelling, date, event start times and flight number supersede earlier values.
+- Calendar end times were not provided. Default blocks are one hour for the ceremony and five hours for the celebration; edit `ceremonyEnd` and `celebrationEnd` if hosts provide exact end times.
+- The exact font file from the image was not provided. Pinyon Script is a close calligraphic match, bundled with Cormorant Garamond for offline preview.
+- Venue illustrations reuse the supplied artwork through CSS windows; they are decorative artwork rather than photographs of the venues.
+- `VALIDATION.md` states completed checks and any browser-verification limitations. No specific device frame rate is promised.
+
+## Validate
+
+```sh
+npm run check
+npm run build
+npm test
+```
+
+| File | Edit |
 | --- | --- |
-| `ADMIN_USERNAME` | Staff login name |
-| `ADMIN_PASSWORD` | Long, unique staff password |
-| `SESSION_SECRET` | Random secret of at least 32 characters |
+| `dist/config.js` | Photos, maps, music and calendar dates |
+| `dist/index.html` | Guest-facing text and layout |
+| `dist/styles.css` | Material, typography, geometry and mobile layout |
+| `dist/app.js` | Opening, scroll plane, RSVP and calendar |
+| `server.mjs` | Local/persistent Node hosting |
+| `api/` and `lib/` | Durable Vercel RSVP and staff routes |
 
-Optional: `PORT`, `NODE_ENV=production`, and `DATA_DIR`. Production mode adds the `Secure` flag to the HTTP-only, SameSite session cookie, so deploy behind HTTPS.
-
-This is a stateful Node application, not a static-only deployment. Use any Node 22+ host with persistent disk. Do not deploy only `dist/`; doing so would omit RSVP storage and staff authentication.
-
-## Verification
-
-```powershell
-npm.cmd run check
-npm.cmd test
-```
-
-The integration test saves both Yes and No households, rejects unauthenticated dashboard access, verifies duplicate-submission protection, restarts the server, signs in, and confirms the saved totals remain available.
+Sources: [Vercel Node Functions](https://vercel.com/docs/functions/runtimes/node-js), [Vercel configuration](https://vercel.com/docs/project-configuration/vercel-json), [Upstash REST](https://upstash.com/docs/redis/features/restapi), [Google Fonts](https://github.com/google/fonts). See `ART_DIRECTION.md` and `CODEX_HANDOFF.md` for continuation.
