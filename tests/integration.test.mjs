@@ -69,7 +69,7 @@ test('serves invitation and protects staff records', async () => {
   assert.match(html, /app\.js/);
   assert.match(html, /2026-12-19/);
   assert.match(html, /DECEMBER 19 · 6:00 PM/);
-  assert.match(html, /DECEMBER 19 · 2:00 PM/);
+  assert.match(html, /DECEMBER 19 · 1:00 PM/);
   assert.doesNotMatch(html, /6:30 PM|wedding-motifs/);
   const unauthorized = await fetch(baseUrl + '/api/admin/rsvps');
   assert.equal(unauthorized.status, 401);
